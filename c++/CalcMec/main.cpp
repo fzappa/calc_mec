@@ -20,12 +20,13 @@ using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
 int main()
 {
 	try{
-			printf("\n#### CABO BLUEJAY - NEXANS - CIRCUITO DE 765KV ####\n\n");
 			
 			//Leitura dos dados
 			conf lt;
 			relat r;
 			lt.load("dados.xml");
+
+			cout << "\n#### CABO " << lt.modelo << " - " << lt.nome << " ####\n\n";
 			
 			// Definindo algumas constantes
 			const double T0 {lt.trup*(lt.eds/100.0)};
@@ -123,14 +124,14 @@ int main()
 	//	######################## FIM CATENARIA ########################
 
 
-			vector<double> saida(4);
-			flecha_cabo(lt.massa, lt.cvao, T0, lt.phi, lt.ventomed, saida);
+			vector<double>* saida;
+			saida = flecha_cabo(lt.massa, lt.cvao, T0, lt.phi, lt.ventomed);
 			
 			r.hseg = altura_seg(lt.tensao,lt.h0);
-			r.flecha = saida[0];
-			r.balanco = saida[1];
-			r.flechav = saida[2];
-			r.flat = saida[3];
+			r.flecha = saida->at(0);
+			r.balanco = saida->at(1);
+			r.flechav = saida->at(2);
+			r.flat = saida->at(3);
 			r.save("relatorio.xml");
 			
 			printf ("Altura de segurança: %.2f [m]\n", r.hseg);

@@ -8,17 +8,16 @@
 double altura_seg(const double& V, 
 									const double& H0);
 									
-void flecha_cabo(const double& MASSA, 
-								 const double& VAO, 
-								 const double& T0, 
-								 const double& PHI, 
-								 const double& VENTO_MED,
-								 std::vector<double>& saida);
+std::vector<double>* flecha_cabo(const double& MASSA, 
+																 const double& VAO,
+																 const double& T0, 
+																 const double& PHI, 
+																 const double& VENTO_MED);
 								 
-Eigen::MatrixXd *catenaria_cabo(const double& C1, 
-										const double& H, 
-										const double& L, 
-										const double& NX, 
-										double& LCABO);
+Eigen::MatrixXd* catenaria_cabo(const double& C1, 
+																const double& H, 
+																const double& L, 
+																const double& NX, 
+																double& LCABO);
 
 #endif

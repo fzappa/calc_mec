@@ -34,13 +34,14 @@ double altura_seg(const double& V,
 	#%%% Labegalini, Fuchs, Almeida. Pg 21, 2ª edição  
 	#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 	*/
-	void flecha_cabo(const double& MASSA, 
-									 const double& VAO, 
-									 const double& T0, 
-									 const double& PHI, 
-									 const double& VENTO_MED, 
-									 std::vector<double>& saida){
+	vector<double>* flecha_cabo(const double& MASSA, 
+															const double& VAO, 
+															const double& T0, 
+															const double& PHI, 
+															const double& VENTO_MED){
 		
+		
+		vector<double>* saida {new vector<double>(4)};
 		double flecha, forv, bal, foreq, flev, esfl;
 			
 		flecha = (MASSA*(VAO*VAO))/(8*T0);             // flecha [m]
@@ -50,10 +51,12 @@ double altura_seg(const double& V,
 		flev = (foreq*(VAO*VAO))/(8*T0);               // flecha devido ao vento [m]
 		esfl = ((foreq*VAO)/2);                        // esforco lateral [kgf]
 		
-		saida[0] = flecha;
-		saida[1] = bal;
-		saida[2] = flev;
-		saida[3] = esfl;
+		saida->at(0) = flecha;
+		saida->at(1) = bal;
+		saida->at(2) = flev;
+		saida->at(3) = esfl;
+		
+		return saida;
 	}
 	
 
