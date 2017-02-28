@@ -1,0 +1,9 @@
+[{
+  "directory": "/home/arquivos/git/calcmec/c++/CalcMec",
+  "command": "/usr/bin/g++ -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -O2 -std=c++14 -Wall -DNDEBUG -I. -I. -MG -MP -MT./Release/FuncoesMec.cpp.o -MF./Release/FuncoesMec.cpp.o.d -MM FuncoesMec.cpp",
+  "file": "/home/arquivos/git/calcmec/c++/CalcMec/FuncoesMec.cpp"
+ }, {
+  "directory": "/home/arquivos/git/calcmec/c++/CalcMec",
+  "command": "/usr/bin/g++ -c /home/arquivos/git/calcmec/c++/CalcMec/FuncoesMec.cpp -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -O2 -std=c++14 -Wall -DNDEBUG -o ./Release/FuncoesMec.cpp.o -I. -I.",
+  "file": "/home/arquivos/git/calcmec/c++/CalcMec/FuncoesMec.cpp"
+ }]

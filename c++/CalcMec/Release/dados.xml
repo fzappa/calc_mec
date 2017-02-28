@@ -40,6 +40,6 @@ xsi:noNamespaceSchemaLocation="dados.xsd">
         <tamb>25</tamb>
         <tmax>39.2</tmax>
         <tmin>-0.3</tmin>
-        <ventomed>20.0</ventomed>
+        <ventomed>1.0</ventomed>
       </cabo>
 </projeto>

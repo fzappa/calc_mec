@@ -15,11 +15,10 @@ void flecha_cabo(const double& MASSA,
 								 const double& VENTO_MED,
 								 std::vector<double>& saida);
 								 
-void catenaria_cabo(const double& C1, 
+Eigen::MatrixXd *catenaria_cabo(const double& C1, 
 										const double& H, 
 										const double& L, 
 										const double& NX, 
-										double& LCABO,
-										Eigen::MatrixXd& mxy);
+										double& LCABO);
 
 #endif

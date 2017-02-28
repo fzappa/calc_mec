@@ -37,8 +37,10 @@ int main()
 			
 			// Chama a funcao catenaria e retorna o comprimento do cabo 
 			// e a matriz posicao x altura
-			Eigen::MatrixXd mxy;
-			catenaria_cabo(C1, lt.h0, lt.cvao, lt.nl, r.ccabo, mxy);
+			Eigen::MatrixXd* mxy;
+			mxy = catenaria_cabo(C1, lt.h0, lt.cvao, lt.nl, r.ccabo);
+			
+			cout << "SAIDA" << endl;
 
 	//	######################### CATENARIA #########################
 	//	#Dados da catenaria
@@ -46,18 +48,18 @@ int main()
 			printf("Comprimento do cabo: %.2f m\n",r.ccabo);
 			printf("H(max) = %.2f m\n", lt.h0);
 			
-			r.hmin = mxy.col(1).minCoeff();
+			r.hmin = mxy->col(1).minCoeff();
 			printf("H(min) = %.2f m\n", r.hmin);
 			
-			r.qcil = mxy.rows();
+			r.qcil = mxy->rows();
 			printf("Quantidade de cilindros (TRICAMP) = %.2f \n\n", r.qcil);
 			
 			vector<double> px, py;
 			
 			//converte os pontos para um vetor (gnuplot)
-			for(int i=0;i<mxy.rows();i++){
-				px.push_back((double)mxy(i,0));
-				py.push_back((double)mxy(i,1));
+			for(int i=0;i<mxy->rows();i++){
+				px.push_back((double)mxy->coeffRef(i,0));
+				py.push_back((double)mxy->coeffRef(i,1));
 			}
 			
 			// ------- Gera o grafico usando o Gnuplot ---------- //
@@ -104,8 +106,8 @@ int main()
 			//Salva os resultados em arquivo
 			ofstream resultados;
 			resultados.open ("catenaria.dat");
-			for(int i = 0;i<mxy.rows();i++){
-				resultados << mxy(i,0) << "\t" << mxy(i,1) << endl;
+			for(int i = 0;i< mxy->rows();i++){
+				resultados << mxy->coeffRef(i,0) << "\t" << mxy->coeffRef(i,1) << endl;
 			}
 			resultados.close();
 			

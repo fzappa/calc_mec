@@ -59,33 +59,39 @@ double altura_seg(const double& V,
 
 //#if 0
 
-	void catenaria_cabo(const double& C1, 
-											const double& H, 
-											const double& VAO, 
-											const double& NX,
-											double& LCABO, 
-											Eigen::MatrixXd& mxy){
+Eigen::MatrixXd *catenaria_cabo(const double& C1, 
+																const double& H, 
+																const double& VAO, 
+																const double& NX,
+																double& LCABO){
 		
+		//Inicializa o ponteiro
+		Eigen::MatrixXd *mxy {new Eigen::MatrixXd};
 		
 		//inicializa o array
 		unsigned short int i {0};
 		for(double val=(-VAO/2);val<=(VAO/2);val+=(VAO/NX)){
 			i++;
 		}
-		mxy.resize(i,2);
+		mxy->resize(i,2);
 		
 		//coloca os valores
 		i=0;
 		for(double val=(-VAO/2);val<=(VAO/2);val+=(VAO/NX)){
-			mxy(i,0) = val;
+			(*mxy)(i,0) = val;
+			// Outro modos de referenciar:
+			// (*mxy).coeffRef(i,0)
+			// mxy->coeffReff(i,0)
 			i++;
 		}
 		
 		//Calcula os pontos da catenaria
-		mxy.col(1) = H - (C1*(((mxy.col(0)/C1).array().cosh())-1)); 
+		mxy->col(1) = H - (C1*(((mxy->col(0)/C1).array().cosh())-1)); 
 		
 		// inverte a curva
-		mxy.col(1) = H - (mxy.col(1).array() - mxy.col(1).minCoeff()); 
+		mxy->col(1) = H - (mxy->col(1).array() - mxy->col(1).minCoeff()); 
 		
 		LCABO = 2*C1*sinh(VAO/(2*C1));
+		
+		return mxy;
 	}
