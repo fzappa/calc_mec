@@ -1,5 +1,17 @@
 [{
   "directory": "/home/arquivos/git/calcmec/c++/CalcMec",
-  "command": "/usr/bin/g++ -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -g -O0 -Wall -I. -I. -MG -MP -MT./Debug/main.cpp.o -MF./Debug/main.cpp.o.d -MM main.cpp",
+  "command": "/usr/bin/g++ -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -O2 -std=c++14 -Wall -DNDEBUG -I. -I. -MG -MP -MT./Release/main.cpp.o -MF./Release/main.cpp.o.d -MM main.cpp",
   "file": "/home/arquivos/git/calcmec/c++/CalcMec/main.cpp"
+ }, {
+  "directory": "/home/arquivos/git/calcmec/c++/CalcMec",
+  "command": "/usr/bin/g++ -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -O2 -std=c++14 -Wall -DNDEBUG -I. -I. -MG -MP -MT./Release/GeraGrafico.cpp.o -MF./Release/GeraGrafico.cpp.o.d -MM GeraGrafico.cpp",
+  "file": "/home/arquivos/git/calcmec/c++/CalcMec/GeraGrafico.cpp"
+ }, {
+  "directory": "/home/arquivos/git/calcmec/c++/CalcMec",
+  "command": "/usr/bin/g++ -c /home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/main.cpp -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -O2 -std=c++14 -Wall -DNDEBUG -o ./Release/main.cpp.o -I. -I.",
+  "file": "/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/main.cpp"
+ }, {
+  "directory": "/home/arquivos/git/calcmec/c++/CalcMec",
+  "command": "/usr/bin/g++ -c /home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/GeraGrafico.cpp -lboost_iostreams -lboost_system -lboost_filesystem -lboost_thread -O2 -std=c++14 -Wall -DNDEBUG -o ./Release/GeraGrafico.cpp.o -I. -I.",
+  "file": "/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/GeraGrafico.cpp"
  }]

@@ -1,21 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <chrono>
-#include <thread>
 #include <string>
+#include <iomanip>
+
 
 #include "FuncoesMec.h"
-#include "gnuplot_i.hpp"
+#include "GeraGrafico.h"
 #include "ParserXML.h"
 
 using namespace std;
 using namespace Eigen;
 
-// Delay para o programa conseguir acessar o disco
-//using namespace std::this_thread;     // sleep_for, sleep_until
-using namespace std::chrono_literals; // ns, us, ms, s, h, etc.
-//using std::chrono::system_clock;
 
 int main()
 {
@@ -38,100 +34,68 @@ int main()
 			
 			// Chama a funcao catenaria e retorna o comprimento do cabo 
 			// e a matriz posicao x altura
-			Eigen::MatrixXd* mxy;
-			mxy = catenaria_cabo(C1, lt.h0, lt.cvao, lt.nl, r.ccabo);
+			Eigen::MatrixXd* ptrMxy;  
+			ptrMxy = catenaria_cabo(C1, lt.h0, lt.cvao, lt.nl, r.ccabo);
 			
-			cout << "SAIDA" << endl;
-
 	//	######################### CATENARIA #########################
 	//	#Dados da catenaria
 			printf("Comprimento do vão: %.2f m\n",lt.cvao);
 			printf("Comprimento do cabo: %.2f m\n",r.ccabo);
 			printf("H(max) = %.2f m\n", lt.h0);
 			
-			r.hmin = mxy->col(1).minCoeff();
+			// ptrMxy.col(0) = distancias
+			// ptrMxy.col(1) = flexas
+			r.hmin = ptrMxy->col(1).minCoeff();
 			printf("H(min) = %.2f m\n", r.hmin);
 			
-			r.qcil = mxy->rows();
+			// Retornar a quantidade de linhas/pedacos de cilindros
+			r.qcil = ptrMxy->rows();
 			printf("Quantidade de cilindros (TRICAMP) = %.2f \n\n", r.qcil);
 			
-			vector<double> px, py;
+			// Inicializa os ponteiros
+			vector<double>* ptrPx = new vector<double>();
+			vector<double>* ptrPy = new vector<double>();
 			
-			//converte os pontos para um vetor (gnuplot)
-			for(int i=0;i<mxy->rows();i++){
-				px.push_back((double)mxy->coeffRef(i,0));
-				py.push_back((double)mxy->coeffRef(i,1));
+			// Converte os pontos para um vetor (gnuplot)
+			// Ao inves de fazer a copia dos dados, aponta 
+			// o endereco da memoria em que estao armazenados
+			for(int i=0; i < ptrMxy->rows(); i++){
+				ptrPx->push_back((double)ptrMxy->coeffRef(i,0));
+				ptrPy->push_back((double)ptrMxy->coeffRef(i,1));
 			}
 			
-			// ------- Gera o grafico usando o Gnuplot ---------- //
-			Gnuplot gp;
-			std::ostringstream legenda;  // para compor a legenda
+			
+			// Gera o grafico usando o Gnuplot 
+			gera_grafico(ptrPx, ptrPy, lt);
 
-			gp.reset_all();
-			
-			switch (lt.grafico){
-				case 1:
-					gp.savetops(lt.modelo+" - "+lt.nome);
-					break;
-				case 2:
-					gp.savetosvg(lt.modelo+" - "+lt.nome);
-					break;
-				case 3:
-					gp.savetojpg(lt.modelo+" - "+lt.nome);
-					break;
-				case 4:
-					gp.savetopng(lt.modelo+" - "+lt.nome);
-					break;
-				case 5:
-					gp.savetopdf(lt.modelo+" - "+lt.nome);
-					break;
-				case 6:
-					gp.savetoepslatex(lt.modelo+" - "+lt.nome);
-					break;
-				default:
-					gp.savetopng(lt.modelo+" - "+lt.nome);
-			}
-			
-			gp.set_grid().set_style("lines");
-			gp.set_xrange((-lt.cvao/2),(lt.cvao/2)).set_yrange(0,lt.h0+10.0);
-			gp.set_title(lt.modelo+" - "+lt.nome);
-			gp.set_xlabel("Comprimento").set_ylabel("Altura");
-			
-			legenda << "Vão de " << lt.cvao << "m";
-			gp.plot_xy(px,py,legenda.str());
-			
-			// Executa uma pausa
-			this_thread::sleep_for(100ms);
-		  //---------------------------------------------------//
-		
+
 			//Salva os resultados em arquivo
 			ofstream resultados;
 			resultados.open ("catenaria.dat");
-			for(int i = 0;i< mxy->rows();i++){
-				resultados << mxy->coeffRef(i,0) << "\t" << mxy->coeffRef(i,1) << endl;
+			for(int i = 0;i< ptrMxy->rows();i++){
+				resultados << std::setprecision(4) << ptrMxy->coeffRef(i,0) << "\t" << ptrMxy->coeffRef(i,1) << endl;
 			}
 			resultados.close();
+			
+		
+	//	######################## FIM CATENARIA ########################
+
+
+			// Calcula a flecha devido ao vento
+			vector<double>* ptrSaida;
+			ptrSaida = flecha_cabo(lt.massa, lt.cvao, T0, lt.phi, lt.ventomed);
 			
 			// Salva o relatorio
 			r.titulo = lt.modelo+" - "+lt.nome;
 			r.eds = lt.eds;
 			r.nl = lt.nl;
 			r.cvao = lt.cvao;
-			r.hmax = lt.h0;
-
-		
-		
-	//	######################## FIM CATENARIA ########################
-
-
-			vector<double>* saida;
-			saida = flecha_cabo(lt.massa, lt.cvao, T0, lt.phi, lt.ventomed);
-			
+			r.hmax = lt.h0;			
 			r.hseg = altura_seg(lt.tensao,lt.h0);
-			r.flecha = saida->at(0);
-			r.balanco = saida->at(1);
-			r.flechav = saida->at(2);
-			r.flat = saida->at(3);
+			r.flecha = ptrSaida->at(0);
+			r.balanco = ptrSaida->at(1);
+			r.flechav = ptrSaida->at(2);
+			r.flat = ptrSaida->at(3);
 			r.save("relatorio.xml");
 			
 			printf ("Altura de segurança: %.2f [m]\n", r.hseg);
@@ -142,6 +106,12 @@ int main()
 			printf ("Comprimento do cabo: %.2f [m]\n", r.ccabo);	
 			printf ("Disposição do feixe: (%.2f, %.2f, %.2f) [m]\n", 
 			lt.gfeixe[0], lt.gfeixe[1], lt.gfeixe[2]);	
+			
+			// Libera a memoria utilizada pelos ponteiros
+			delete ptrMxy;
+			delete ptrSaida;
+			delete ptrPx;
+			delete ptrPy;
 			
 	}	catch (std::exception &e){
 			cout << "Erro: " << e.what() << "\n";

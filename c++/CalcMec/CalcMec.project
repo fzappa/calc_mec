@@ -14,6 +14,8 @@
     <File Name="gnuplot_i.hpp"/>
     <File Name="ParserXML.cpp"/>
     <File Name="ParserXML.h"/>
+    <File Name="GeraGrafico.cpp"/>
+    <File Name="GeraGrafico.h"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

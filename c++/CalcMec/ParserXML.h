@@ -1,6 +1,9 @@
 #ifndef PARSERXML_H
 #define PARSERXML_H
 
+#include <iostream>
+#include <vector>
+
 struct conf{
 
     // Dados do vao

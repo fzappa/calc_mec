@@ -1,40 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Session Name="/home/arquivos/git/calcmec/c++/CalcMec.workspace">
+<Session Name="/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec.workspace">
   <int Value="0" Name="m_selectedTab"/>
-  <wxString Value="/home/arquivos/git/calcmec/c++/CalcMec.workspace" Name="m_workspaceName"/>
+  <wxString Value="/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
-      <wxString Value="/home/arquivos/git/calcmec/c++/CalcMec/main.cpp" Name="FileName"/>
-      <int Value="14" Name="FirstVisibleLine"/>
-      <int Value="18" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/arquivos/git/calcmec/c++/CalcMec/FuncoesMec.h" Name="FileName"/>
+      <wxString Value="/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/main.cpp" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="20" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/arquivos/git/calcmec/c++/CalcMec/FuncoesMec.cpp" Name="FileName"/>
-      <int Value="4" Name="FirstVisibleLine"/>
-      <int Value="56" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/arquivos/git/calcmec/c++/CalcMec/ParserXML.cpp" Name="FileName"/>
-      <int Value="24" Name="FirstVisibleLine"/>
-      <int Value="1" Name="CurrentLine"/>
-      <wxArrayString Name="Bookmarks"/>
-      <IntVector Name="CollapsedFolds"/>
-    </TabInfo>
-    <TabInfo>
-      <wxString Value="/home/arquivos/git/calcmec/c++/CalcMec/ParserXML.h" Name="FileName"/>
-      <int Value="0" Name="FirstVisibleLine"/>
-      <int Value="6" Name="CurrentLine"/>
+      <int Value="0" Name="CurrentLine"/>
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
