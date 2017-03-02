@@ -5,15 +5,15 @@
 ## Release
 ProjectName            :=CalcMec
 ConfigurationName      :=Release
-WorkspacePath          :=/home/alan/Documentos/programacao/c++/CalcMec/calcmec
-ProjectPath            :=/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec
+WorkspacePath          :=/home/arquivos/git/calcmec/c++
+ProjectPath            :=/home/arquivos/git/calcmec/c++/CalcMec
 IntermediateDirectory  :=./Release
 OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=alan
-Date                   :=03/01/17
+Date                   :=03/02/17
 CodeLitePath           :=/home/alan/.codelite
 LinkerName             :=/usr/bin/g++
 SharedObjectLinkerName :=/usr/bin/g++ -shared -fPIC
@@ -92,7 +92,7 @@ PreBuild:
 ## Objects
 ##
 $(IntermediateDirectory)/main.cpp$(ObjectSuffix): main.cpp $(IntermediateDirectory)/main.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/arquivos/git/calcmec/c++/CalcMec/main.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/main.cpp$(DependSuffix): main.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/main.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/main.cpp$(DependSuffix) -MM main.cpp
 
@@ -100,7 +100,7 @@ $(IntermediateDirectory)/main.cpp$(PreprocessSuffix): main.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/main.cpp$(PreprocessSuffix) main.cpp
 
 $(IntermediateDirectory)/FuncoesMec.cpp$(ObjectSuffix): FuncoesMec.cpp $(IntermediateDirectory)/FuncoesMec.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/FuncoesMec.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/FuncoesMec.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/arquivos/git/calcmec/c++/CalcMec/FuncoesMec.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/FuncoesMec.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/FuncoesMec.cpp$(DependSuffix): FuncoesMec.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/FuncoesMec.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/FuncoesMec.cpp$(DependSuffix) -MM FuncoesMec.cpp
 
@@ -108,7 +108,7 @@ $(IntermediateDirectory)/FuncoesMec.cpp$(PreprocessSuffix): FuncoesMec.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/FuncoesMec.cpp$(PreprocessSuffix) FuncoesMec.cpp
 
 $(IntermediateDirectory)/ParserXML.cpp$(ObjectSuffix): ParserXML.cpp $(IntermediateDirectory)/ParserXML.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/ParserXML.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ParserXML.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/arquivos/git/calcmec/c++/CalcMec/ParserXML.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ParserXML.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/ParserXML.cpp$(DependSuffix): ParserXML.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ParserXML.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ParserXML.cpp$(DependSuffix) -MM ParserXML.cpp
 
@@ -116,7 +116,7 @@ $(IntermediateDirectory)/ParserXML.cpp$(PreprocessSuffix): ParserXML.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ParserXML.cpp$(PreprocessSuffix) ParserXML.cpp
 
 $(IntermediateDirectory)/GeraGrafico.cpp$(ObjectSuffix): GeraGrafico.cpp $(IntermediateDirectory)/GeraGrafico.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/alan/Documentos/programacao/c++/CalcMec/calcmec/CalcMec/GeraGrafico.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/GeraGrafico.cpp$(ObjectSuffix) $(IncludePath)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/arquivos/git/calcmec/c++/CalcMec/GeraGrafico.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/GeraGrafico.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/GeraGrafico.cpp$(DependSuffix): GeraGrafico.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/GeraGrafico.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/GeraGrafico.cpp$(DependSuffix) -MM GeraGrafico.cpp
 

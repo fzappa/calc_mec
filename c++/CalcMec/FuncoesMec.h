@@ -5,19 +5,19 @@
 #include <vector>
 #include <eigen3/Eigen/Dense>
 
-double altura_seg(const double& V, 
-									const double& H0);
+double altura_seg(const double&, 
+									const double&);
 									
-std::vector<double>* flecha_cabo(const double& MASSA, 
-																 const double& VAO,
-																 const double& T0, 
-																 const double& PHI, 
-																 const double& VENTO_MED);
+std::vector<double>* flecha_cabo(const double&, 
+																 const double&,
+																 const double&, 
+																 const double&, 
+																 const double&);
 								 
-Eigen::MatrixXd* catenaria_cabo(const double& C1, 
-																const double& H, 
-																const double& L, 
-																const double& NX, 
-																double& LCABO);
+Eigen::MatrixXd* catenaria_cabo(const double&, 
+																const double&, 
+																const double&, 
+																const double&, 
+																double&);
 
 #endif

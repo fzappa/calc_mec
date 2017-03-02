@@ -34,11 +34,11 @@ int main()
 			
 			// Chama a funcao catenaria e retorna o comprimento do cabo 
 			// e a matriz posicao x altura
-			Eigen::MatrixXd* ptrMxy;  
+			Eigen::MatrixXd* ptrMxy {nullptr};  // Inicializa o ponteiro
 			ptrMxy = catenaria_cabo(C1, lt.h0, lt.cvao, lt.nl, r.ccabo);
 			
-	//	######################### CATENARIA #########################
-	//	#Dados da catenaria
+			// ######################### CATENARIA #########################
+			// #Dados da catenaria
 			printf("Comprimento do vão: %.2f m\n",lt.cvao);
 			printf("Comprimento do cabo: %.2f m\n",r.ccabo);
 			printf("H(max) = %.2f m\n", lt.h0);
@@ -78,11 +78,11 @@ int main()
 			resultados.close();
 			
 		
-	//	######################## FIM CATENARIA ########################
+			//######################## FIM CATENARIA ########################
 
 
 			// Calcula a flecha devido ao vento
-			vector<double>* ptrSaida;
+			vector<double>* ptrSaida {nullptr};
 			ptrSaida = flecha_cabo(lt.massa, lt.cvao, T0, lt.phi, lt.ventomed);
 			
 			// Salva o relatorio
@@ -107,11 +107,6 @@ int main()
 			printf ("Disposição do feixe: (%.2f, %.2f, %.2f) [m]\n", 
 			lt.gfeixe[0], lt.gfeixe[1], lt.gfeixe[2]);	
 			
-			// Libera a memoria utilizada pelos ponteiros
-			delete ptrMxy;
-			delete ptrSaida;
-			delete ptrPx;
-			delete ptrPy;
 			
 	}	catch (std::exception &e){
 			cout << "Erro: " << e.what() << "\n";

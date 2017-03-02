@@ -3,8 +3,8 @@
 
 #include "ParserXML.h"
 
-void gera_grafico(const std::vector<double>* px,
-									const std::vector<double>* py,
-									const conf& dados);
+void gera_grafico(const std::vector<double>*,
+									const std::vector<double>*,
+									const conf&);
 
 #endif

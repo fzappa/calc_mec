@@ -33,8 +33,10 @@ struct conf{
     double tmax {0.0};
     double tmin {0.0};
     double ventomed {0.0};
-    void load(const std::string &filename);
-    void save(const std::string &filename);
+		
+		// Ler e salvar
+    void load(const std::string&);
+    void save(const std::string&);
 };
 
 
@@ -55,7 +57,9 @@ struct relat{
 		double flechav {0.0};
 		double flat {0.0};
 		std::vector<double> gfeixe {0.0, 0.0, 0.0};
-    void save(const std::string &filename);
+		
+		//Salvar relatorio
+    void save(const std::string&);
 };
 
 
