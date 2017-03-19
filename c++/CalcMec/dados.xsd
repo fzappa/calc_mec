@@ -3,45 +3,56 @@
   <xs:element name="projeto" type="projetoType"/>
   <xs:complexType name="gfeixeType">
     <xs:sequence>
-      <xs:element type="xs:double" name="e"/>
-      <xs:element type="xs:double" name="c"/>
-      <xs:element type="xs:double" name="d"/>
+      <xs:element type="xs:float" name="e"/>
+      <xs:element type="xs:float" name="c"/>
+      <xs:element type="xs:float" name="d"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="vaoType">
     <xs:sequence>
-      <xs:element type="xs:double" name="ncfeixe"/>
-      <xs:element type="xs:double" name="dfeixe"/>
+      <xs:element type="xs:byte" name="ncfeixe"/>
+      <xs:element type="xs:float" name="dfeixe"/>
       <xs:element type="gfeixeType" name="gfeixe"/>
-      <xs:element type="xs:double" name="comprimento"/>
-      <xs:element type="xs:double" name="h0"/>
-      <xs:element type="xs:double" name="eds"/>
-      <xs:element type="xs:double" name="nl"/>
-      <xs:element type="xs:double" name="tensao"/>
+      <xs:element type="xs:float" name="comprimento"/>
+      <xs:element type="xs:float" name="h0"/>
+      <xs:element type="xs:float" name="eds"/>
+      <xs:element type="xs:byte" name="nl"/>
+      <xs:element type="xs:float" name="tensao"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="caboType">
     <xs:sequence>
       <xs:element type="xs:string" name="modelo"/>
-      <xs:element type="xs:double" name="secao"/>
-      <xs:element type="xs:double" name="phi"/>
-      <xs:element type="xs:double" name="massa"/>
-      <xs:element type="xs:double" name="trup"/>
-      <xs:element type="xs:double" name="alphafinal"/>
-      <xs:element type="xs:double" name="elastfinal"/>
-      <xs:element type="xs:double" name="pminimo"/>
-      <xs:element type="xs:double" name="pmaximo"/>
-      <xs:element type="xs:double" name="tcop"/>
-      <xs:element type="xs:double" name="tamb"/>
-      <xs:element type="xs:double" name="tmax"/>
-      <xs:element type="xs:double" name="tmin"/>
-      <xs:element type="xs:double" name="ventomed"/>
+      <xs:element type="xs:float" name="secao"/>
+      <xs:element type="xs:float" name="phi"/>
+      <xs:element type="xs:float" name="massa"/>
+      <xs:element type="xs:float" name="trup"/>
+      <xs:element type="xs:float" name="alphafinal"/>
+      <xs:element type="xs:float" name="elastfinal"/>
+      <xs:element type="xs:byte" name="pminimo"/>
+      <xs:element type="xs:byte" name="pmaximo"/>
+      <xs:element type="xs:byte" name="tcop"/>
+      <xs:element type="xs:byte" name="tamb"/>
+      <xs:element type="xs:float" name="tmax"/>
+      <xs:element type="xs:float" name="tmin"/>
+      <xs:element type="xs:float" name="ventomed"/>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="projetoType">
     <xs:sequence>
       <xs:element type="xs:string" name="nome"/>
-      <xs:element type="xs:integer" name="grafico"/>
+      <xs:element type="xs:byte" name="grafico">
+        <xs:annotation>
+          <xs:documentation>
+      1 - PS
+      2 - SVG
+      3 - JPG
+      4 - PNG
+      5 - PDF
+      6 - EPSLaTex
+    </xs:documentation>
+        </xs:annotation>
+      </xs:element>
       <xs:element type="vaoType" name="vao"/>
       <xs:element type="caboType" name="cabo"/>
     </xs:sequence>
