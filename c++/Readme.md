@@ -1,9 +1,13 @@
-Projeto criado utilizando o Codelite 10
+Implementations of some functions for catenary calc of overhead transmission lines.
 
-Implementado:
+Project made and tested with Codelite 10 on Arch Linux
 
-Leitura dos dados a partir de arquivo XML.
+Some implementations
 
-Saida de relatório em XML.
+Read data from XML.
 
-Geração do gráfico da catenária utilizando o Gnuplot.
+Report in XML.
+
+Generation of the catenary graph using Gnuplot. 
+
+Formats: PS, SVG, JPG, PNG, PDF and EPSLaTex.
