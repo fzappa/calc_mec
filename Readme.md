@@ -1,1 +1,1 @@
-Projetos motivacionais para o estudo das linguagens Julia e C++
+Personal projects for the study of Julia and C++ languages.
