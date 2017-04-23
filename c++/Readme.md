@@ -1,13 +1,13 @@
-Implementations of some functions for catenary calc of overhead transmission lines.
+Mechanical Calculation of Transmission Lines
+============================================
 
-Project made and tested with Codelite 10 on Arch Linux
+Implementations of some functions for catenary calcule of overhead transmission lines.
+--------------------------------------------------------------------------------------
 
-Some implementations
-
-Read data from XML.
-
-Report in XML.
-
-Generation of the catenary graph using Gnuplot. 
-
-Formats: PS, SVG, JPG, PNG, PDF and EPSLaTex.
+> **About:**
+> 
+>- Project made and tested with Codelite 10 on Arch Linux
+>- Read data from XML.
+>- Report in XML.
+>- Generation of the catenary graph using Gnuplot. 
+>- Formats: PS, SVG, JPG, PNG, PDF and EPSLaTex.
