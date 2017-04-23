@@ -1,1 +1,5 @@
-Implementations of some functions for catenary calc of overhead transmission lines.
+Mechanical Calculation of Transmission Lines
+============================================
+
+Implementations of some functions for catenary calcule of overhead transmission lines.
+--------------------------------------------------------------------------------------
