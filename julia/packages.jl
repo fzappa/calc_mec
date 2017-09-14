@@ -9,6 +9,7 @@ print_with_color(:red,"Instalando PyCall (Julia)...\n");
 Pkg.add("PyCall");
 
 print_with_color(:red,"Instalando Matplotlib (Python)...\n");
+print_with_color(:red,"# pacman -S python-pip (Arch Linux) \n");
 run(`sudo pip install matplotlib`);
 
 print_with_color(:red,"Instalar o pacote tk \n");
