@@ -1,4 +1,5 @@
-#!/usr/bin/julia
+#!/usr/bin/env julia
+using Printf
 
 include("funcoes/catenaria_cabo.jl")
 include("funcoes/flecha_cabo.jl")
@@ -38,12 +39,17 @@ T0 = T_RUP*EDS         ;
 p = MASSA              ; #C1 = p
 C1 = T0/p	       ;
 
-
-println(@sprintf "EDS = %.2f %%" EDS*100);
-println(@sprintf "DL = %.2f m" DL);
+@printf("EDS = %.2f", EDS*100);
+@printf("DL = %.2f m", DL);
 #%%%%% COMPRIMENTO DO VÃO X FLECHA %%%%%%%
-
+###########  Julia 1.0 ###########
 #Para plotar o grafico
+#julia> using Pkg
+#julia> Pkg.add("PyCall")
+#julia> Pkg.add("Conda")
+#julia> using Conda
+#julia> Conda.add("matplotlib")
+############################
 using PyCall
 @pyimport matplotlib.pyplot as plt
 #using PyPlot
@@ -53,18 +59,18 @@ X,Y,LCABO = catenaria_cabo(C1,H,VAO,DX);
 
 ######################### CATENARIA #########################
 #Dados da catenaria
-println(@sprintf "Comprimento do cabo para o vão de %.2f m: %.2f m" VAO LCABO);
-println(@sprintf "H(max) = %.2f m" H);
-println(@sprintf "H(min) = %.2f m\n\n" minimum(Y));
+@printf("Comprimento do cabo para o vão de %.2f m: %.2f m", VAO, LCABO);
+@printf("H(max) = %.2f m",H);
+@printf("H(min) = %.2f m\n\n", minimum(Y));
 
 #Desenha a catenária
 plt.figure(1);
-display(plt.plot(X', Y', color="red",marker="None", label=string("Vão de ", VAO,"m")));
+display(plt.plot(X', Y', color="red",marker=false, label=string("Vão de ", VAO,"m")));
 display(plt.title("Flexa x Comprimento do vão"));
 plt.xlabel("Comprimento do vão [m]");
 plt.ylabel("Flecha [m]");
-plt.grid("on");
-plt.legend(loc="lower right",fancybox="true");
+plt.grid(true);
+plt.legend(loc="lower right",fancybox=true);
 
 #Controle dos eixos
 ax = plt.gca();
@@ -77,15 +83,15 @@ ax[:set_ylim]([0;H+(H*0.1)])
 ######################### FEIXE #########################
 ANGC = 360/NCfeixe; #Angulo entre os condutores
 PC = collect(0:ANGC:359); #Posicao dos condutores no circulo
-PX = cosd(PC)*(Dfeixe/2); #Cria o array de posicoes dos condutores
-PY = sind(PC)*(Dfeixe/2);
+PX = cosd.(PC)*(Dfeixe/2); #Cria o array de posicoes dos condutores
+PY = sind.(PC)*(Dfeixe/2);
 
 plt.figure(2);
 display(plt.scatter(PX,PY,s=PHI*1e4,alpha=0.5));
 display(plt.title("Configuração do feixe"));
 plt.xlabel("Largura [m]");
 plt.ylabel("Altura [m]");
-plt.grid("on");
+plt.grid(true);
 
 #Distribucao dos feixes
 Cx=[PX+DC[1]' PX+DC[2]' PX+DC[3]']; #Configuracao do circuito
@@ -96,7 +102,7 @@ display(plt.scatter(Cx,Cy,s=PHI*1e3,alpha=0.5));
 display(plt.title("Disposição dos feixes"));
 plt.xlabel("Largura [m]");
 plt.ylabel("Altura [m]");
-plt.grid("on");
+plt.grid(true);
 
 #Controle dos eixos
 ax = plt.gca();

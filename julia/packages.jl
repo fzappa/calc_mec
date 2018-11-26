@@ -1,17 +1,19 @@
 #!/usr/bin/julia
 
-print_with_color(:red,"\n#### Instalando dependências ####\n\n");
+using Pkg
 
-print_with_color(:red,"Atualizando base...\n");
+print("\n#### Instalando dependências ####\n\n");
+
+print("Atualizando base...\n");
 Pkg.update();
 
-print_with_color(:red,"Instalando PyCall (Julia)...\n");
+print("Instalando PyCall (Julia)...\n");
 Pkg.add("PyCall");
 
-print_with_color(:red,"Instalando Matplotlib (Python)...\n");
-print_with_color(:red,"# pacman -S python-pip (Arch Linux) \n");
+print("Instalando Matplotlib (Python)...\n");
+print("# pacman -S python-pip (Arch Linux) \n");
 run(`sudo pip install matplotlib`);
 
-print_with_color(:red,"Instalar o pacote tk \n");
-print_with_color(:red,"# pacman -S tk (Arch Linux) \n");
-print_with_color(:red,"# apt install tk (Ubuntu) \n");
+print("Instalar o pacote tk \n");
+print("# pacman -S tk (Arch Linux) \n");
+print("# apt install tk (Ubuntu) \n");
