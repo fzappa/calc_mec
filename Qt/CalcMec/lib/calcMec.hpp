@@ -1,12 +1,12 @@
 #ifndef FUNCOESMEC_H
 #define FUNCOESMEC_H
 
-#define EIGEN_USE_MKL_ALL
+//#define EIGEN_USE_MKL_ALL
 
 #define MIN(a, b) ((a < b) ? a : b)
 #define MAX(a, b) ((a > b) ? a : b)
 
-#include <Eigen/Dense>
+#include <Eigen/Dense> // ln -s /usr/include/eigen3/Eigen /usr/include (Arch Linux)
 #include <algorithm>   //lambda
 #include <functional>  //std::function
 #include <memory>      // std::unique_ptr
