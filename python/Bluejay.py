@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-import sys
-sys.path.insert(0,'catenaria/funcoes.py')
 
 import numpy as np
 import matplotlib.pyplot as plt
 
-import catenaria.funcoes as eq
+import defs as eq
 
 print("\n#### CALCULO MECANICO ####")
 print("\n#### CABO BLUEJAY - NEXANS - CIRCUITO DE 765KV ####\n\n")
