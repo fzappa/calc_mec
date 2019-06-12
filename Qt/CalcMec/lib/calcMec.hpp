@@ -6,10 +6,10 @@
 #define MIN(a, b) ((a < b) ? a : b)
 #define MAX(a, b) ((a > b) ? a : b)
 
-#include <Eigen/Dense> // ln -s /usr/include/eigen3/Eigen /usr/include (Arch Linux)
-#include <algorithm>   //lambda
-#include <functional>  //std::function
-#include <memory>      // std::unique_ptr
+#include <Eigen/Dense>  // ln -s /usr/include/eigen3/Eigen /usr/include (Arch Linux)
+#include <algorithm>    //lambda
+#include <functional>   //std::function
+#include <memory>       // std::unique_ptr
 #include <vector>
 
 struct conf {

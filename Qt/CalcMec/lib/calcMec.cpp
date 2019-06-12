@@ -52,7 +52,8 @@ double iACRS(const conf &caso, const double &tcurto)
 /**
     Função para calculo da altura de segurança
     @param V: Nível de tensão em V
-    @param MIN(caso.hA,caso.hB): Altura do ponto mais baixo dos condutores em metros
+    @param MIN(caso.hA,caso.hB): Altura do ponto mais baixo dos condutores em
+   metros
     @return Altura de segurança em metros
 */
 double alturaSeg(const conf &caso)
@@ -70,7 +71,8 @@ double alturaSeg(const conf &caso)
         @param T0 Tração inicial [N]
         @param PHI Angulo de balanço [graus]
         @param VENTO_MED Vento medio [m/s]
-        @return Retorna um vector na forma: (Flecha, Balanco, Flecha Vento, Esforco lateral)
+        @return Retorna um vector na forma: (Flecha, Balanco, Flecha Vento,
+   Esforco lateral)
 
         #%%%%%%%%%%%%%%%%%%%%%% Equações %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         #%%% (Livro: Projetos Mecânicos das Linhas Aéreas de Transmissão)
@@ -82,7 +84,8 @@ std::unique_ptr<std::vector<double>> forcasExternas(const conf &caso)
 
     std::unique_ptr<std::vector<double>> ptrSaida{new std::vector<double>(4)};
 
-    // 2.3.3 - Determinacao da pressao do vento - Pagina 116 - Fuchs - Projetos Mecanicos
+    // 2.3.3 - Determinacao da pressao do vento - Pagina 116 - Fuchs - Projetos
+    // Mecanicos
     double rho, altitude, temp;
     altitude = 0.0;        // nivel do mar [m]
     temp     = caso.tamb;  // temperatura ambiente [graus C]
@@ -91,7 +94,8 @@ std::unique_ptr<std::vector<double>> forcasExternas(const conf &caso)
     rho = (1.293 / (1 + 0.00367 * temp)) *
           ((16000 + 64 * temp - altitude) / (16000 + 64 * temp + altitude));  // [kg/m^3]
 
-    // Pressao que o vento exerce EQ 2.9  - Pagina 116 - Fuchs - Projetos Mecanicos
+    // Pressao que o vento exerce EQ 2.9  - Pagina 116 - Fuchs - Projetos
+    // Mecanicos
     double q0, ventomed;
     ventomed = caso.ventomed;                        // velocidade do vento do projeto [m/s]
     q0       = (0.5) * rho * (ventomed * ventomed);  // [N/m^2]
@@ -106,7 +110,8 @@ std::unique_ptr<std::vector<double>> forcasExternas(const conf &caso)
     p  = caso.massa;                 // peso proprio do condutor
     pr = sqrt((p * p) + (fv * fv));  // peso virtual do cabo devido a pressao do vento
 
-    // Nova flecha devido ao vento EQ 3.62  - Pagina 196 - Fuchs - Projetos Mecanicos
+    // Nova flecha devido ao vento EQ 3.62  - Pagina 196 - Fuchs - Projetos
+    // Mecanicos
     double S = caso.cvao;
     double flechaNova;
     const double T0{caso.trup * caso.eds};
@@ -115,12 +120,14 @@ std::unique_ptr<std::vector<double>> forcasExternas(const conf &caso)
 
     // TODO -> Pagina 202
 
-    //    flecha = (T0 / caso.massa) * (cosh((caso.cvao * caso.massa) / (2 * T0)) - 1);  // flecha
-    //    [m] forv   = (caso.phi / 2.0) * (caso.ventomed * caso.ventomed);     // forca do vento
-    //    [kgf] bal    = atan(forv / caso.massa) * (180 / M_PI);                 // angulo de balaco
-    //    [graus] foreq  = pow(((caso.massa * caso.massa) + (forv * forv)), 0.5);  // forca
-    //    equivalente [kgf] flev   = (foreq * (caso.cvao * caso.cvao)) / (8 * T0);           //
-    //    flecha devido ao vento [m] esfl   = ((foreq * caso.cvao) / 2.0); // esforco lateral [kgf]
+    //    flecha = (T0 / caso.massa) * (cosh((caso.cvao * caso.massa) / (2 * T0))
+    //    - 1);  // flecha [m] forv   = (caso.phi / 2.0) * (caso.ventomed *
+    //    caso.ventomed);     // forca do vento [kgf] bal    = atan(forv /
+    //    caso.massa) * (180 / M_PI);                 // angulo de balaco [graus]
+    //    foreq  = pow(((caso.massa * caso.massa) + (forv * forv)), 0.5);  //
+    //    forca equivalente [kgf] flev   = (foreq * (caso.cvao * caso.cvao)) / (8
+    //    * T0);           // flecha devido ao vento [m] esfl   = ((foreq *
+    //    caso.cvao) / 2.0); // esforco lateral [kgf]
 
     ptrSaida->at(0) = flechaNova;
     ptrSaida->at(1) = 0.0;
@@ -159,9 +166,9 @@ std::unique_ptr<Eigen::MatrixXd> catenaria(const conf &caso, double &LCABO, doub
 
     //------------ Parte 2 - Calculo da catenaria --------------//
 
-    // Utiliza o metodo Newton–Raphson para calcular (x, y) que cubra o comprimento do cabo
-    // de acordo com as caracteristicas do vao.
-    // Discussao: http://mathhelpforum.com/calculus/96398-catenary-cable-different-heights.html
+    // Utiliza o metodo Newton–Raphson para calcular (x, y) que cubra o
+    // comprimento do cabo de acordo com as caracteristicas do vao. Discussao:
+    // http://mathhelpforum.com/calculus/96398-catenary-cable-different-heights.html
     // expressao lambda para f(x)
     auto f = [&](double x) -> double {
         return (2.0 * x * sinh(S / (2.0 * x)) - sqrt((LCABO * LCABO) - (H * H)));
