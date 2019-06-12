@@ -1,5 +1,6 @@
 #include "calcMec.hpp"
 #include <boost/math/constants/constants.hpp>
+#include <algorithm>  //lambda
 #include <cmath>
 #include <iostream>
 
